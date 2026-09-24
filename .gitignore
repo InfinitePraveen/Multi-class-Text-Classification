@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local data
+data/*.csv
+data/*.zip
+
+# Downloaded/trained model
+models/bert_agnews/
+models/**/*.bin
+models/**/*.safetensors
+models/**/*.pt
+models/**/*.pth
+
+# HuggingFace cache
+.cache/
+.huggingface/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
