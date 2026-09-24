@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BERT News Topic Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <p class="eyebrow">NLP • BERT • HUGGINGFACE</p>
+            <h1>Multi-class News Classifier</h1>
+            <p class="subtitle">
+                Enter a headline or short news article and let the fine-tuned BERT model
+                predict its topic.
+            </p>
+        </section>
+
+        <section class="card">
+            <form method="POST">
+                <label for="text">News text</label>
+                <textarea
+                    id="text"
+                    name="text"
+                    rows="8"
+                    placeholder="Example: The team won the final after a close match..."
+                >{{ text }}</textarea>
+                <button type="submit">Classify Text</button>
+            </form>
+
+            {% if prediction %}
+            <div class="result">
+                <span class="result-label">Predicted topic</span>
+                <h2>{{ prediction }}</h2>
+                {% if confidence is not none %}
+                <p>Model confidence: {{ "%.1f"|format(confidence * 100) }}%</p>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <div class="message">
+                {{ error }}
+            </div>
+            {% endif %}
+        </section>
+
+        <section class="topics">
+            <h3>Available topics</h3>
+            <div class="topic-list">
+                <span>World</span>
+                <span>Sports</span>
+                <span>Business</span>
+                <span>Sci/Tech</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>Built as a BERT text classification portfolio project.</p>
+            <p>
+                <a href="https://github.com/InfinitePraveen" target="_blank">GitHub</a>
+                <span>•</span>
+                <a href="https://www.linkedin.com/in/infinitepraveen/" target="_blank">LinkedIn</a>
+            </p>
+        </footer>
+    </main>
+</body>
+</html>
